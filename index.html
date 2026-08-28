@@ -4,125 +4,116 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Social Point &middot; Lunch</title>
+<title>Social Point Barcelona &middot; Menu</title>
 <style>
   :root {
-    --ground: #FCF9EB;
-    --ink: #262626;
-    --muted: #6E6E6E;
-    --hair: #D8D3C0;
-    --warn: #A3301E;
-    --warn-bg: #F7E9E5;
+    --ground:#FCF9EB; --ink:#262626; --muted:#6E6E6E; --hair:#D8D3C0;
+    --warn:#A3301E; --warn-bg:#F7E9E5;
   }
-  * { box-sizing: border-box; -webkit-text-size-adjust: 100%; }
+  * { box-sizing:border-box; -webkit-text-size-adjust:100%; }
   body {
-    margin: 0;
-    background: var(--ground);
-    color: var(--ink);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
-    line-height: 1.35;
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:Arial, Helvetica, sans-serif; font-size:17px; line-height:1.35;
   }
-  .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px 64px; }
+  .wrap { max-width:640px; margin:0 auto; padding:0 20px 64px; }
 
-  header { padding: 26px 0 0; }
-  .eyebrow {
-    font-size: 12px; font-weight: 700; letter-spacing: .22em;
-    text-transform: uppercase; color: var(--muted);
+  header { padding:26px 0 0; }
+  h1 {
+    font-size:46px; line-height:1.02; margin:0 0 8px;
+    letter-spacing:-.02em; font-weight:700;
   }
-  h1 { font-size: 40px; line-height: 1; margin: 8px 0 14px; letter-spacing: -.01em; }
-  .rule { height: 5px; background: var(--ink); }
+  .kicker {
+    font-size:13px; font-weight:700; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--muted); margin:0 0 14px;
+  }
+  .rule { height:5px; background:var(--ink); }
 
-  .days { display: flex; gap: 6px; margin: 16px 0 0; }
+  .times { display:flex; gap:10px; margin:16px 0 0; }
+  .slot { flex:1; background:#fff; padding:11px 13px; }
+  .slot dt {
+    font-size:11px; font-weight:700; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--muted);
+  }
+  .slot dd { margin:3px 0 0; font-size:17px; font-weight:700; }
+
+  .days { display:flex; gap:6px; margin:16px 0 0; }
   .day {
-    flex: 1; appearance: none; border: 1px solid var(--ink); background: transparent;
-    color: var(--ink); font: inherit; font-weight: 700; font-size: 15px;
-    padding: 11px 4px; cursor: pointer; line-height: 1.1;
+    flex:1; appearance:none; border:1px solid var(--ink); background:transparent;
+    color:var(--ink); font:inherit; font-weight:700; font-size:15px;
+    padding:11px 4px; cursor:pointer; line-height:1.1;
   }
-  .day span { display: block; font-weight: 400; font-size: 11px; color: var(--muted); }
-  .day[aria-selected="true"] { background: var(--ink); color: var(--ground); }
-  .day[aria-selected="true"] span { color: var(--ground); opacity: .75; }
+  .day span { display:block; font-weight:400; font-size:11px; color:var(--muted); }
+  .day[aria-selected="true"] { background:var(--ink); color:var(--ground); }
+  .day[aria-selected="true"] span { color:var(--ground); opacity:.75; }
 
   .notice {
-    margin: 18px 0 0; padding: 13px 15px; background: #fff;
-    border-left: 5px solid var(--ink); font-size: 14px; line-height: 1.45;
+    margin:18px 0 0; padding:13px 15px; background:#fff;
+    border-left:5px solid var(--ink); font-size:14px; line-height:1.45;
   }
-  .notice b { display: block; margin-top: 3px; }
+  .notice b { display:block; margin-top:3px; }
 
-  .avoid { margin: 22px 0 0; border-top: 1px solid var(--hair); padding-top: 16px; }
+  .avoid { margin:22px 0 0; border-top:1px solid var(--hair); padding-top:16px; }
   .avoid h2 {
-    font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
-    margin: 0 0 4px; font-weight: 700;
+    font-size:12px; letter-spacing:.18em; text-transform:uppercase;
+    margin:0 0 4px; font-weight:700;
   }
-  .avoid p { margin: 0 0 12px; font-size: 13px; color: var(--muted); }
-  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .avoid p { margin:0 0 12px; font-size:13px; color:var(--muted); }
+  .chips { display:flex; flex-wrap:wrap; gap:7px; }
   .chip {
-    appearance: none; border: 1px solid var(--hair); background: transparent;
-    color: var(--ink); font: inherit; font-size: 14px; padding: 7px 12px;
-    border-radius: 999px; cursor: pointer;
+    appearance:none; border:1px solid var(--hair); background:transparent;
+    color:var(--ink); font:inherit; font-size:14px; padding:7px 12px;
+    border-radius:999px; cursor:pointer;
   }
   .chip[aria-pressed="true"] {
-    background: var(--warn); border-color: var(--warn); color: #fff; font-weight: 700;
+    background:var(--warn); border-color:var(--warn); color:#fff; font-weight:700;
   }
   .clear {
-    appearance: none; border: 0; background: none; color: var(--muted);
-    font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer;
-    padding: 8px 0 0;
+    appearance:none; border:0; background:none; color:var(--muted);
+    font:inherit; font-size:13px; text-decoration:underline; cursor:pointer;
+    padding:8px 0 0;
   }
+  .count { margin:14px 0 0; font-size:14px; font-weight:700; color:var(--warn); min-height:20px; }
 
-  .count {
-    margin: 14px 0 0; font-size: 14px; font-weight: 700;
-    color: var(--warn); min-height: 20px;
-  }
-
-  section { margin-top: 30px; }
+  section { margin-top:30px; }
   section h2 {
-    font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
-    margin: 0 0 10px; font-weight: 700;
-    border-bottom: 3px solid var(--ink); padding-bottom: 7px;
+    font-size:13px; letter-spacing:.18em; text-transform:uppercase;
+    margin:0 0 10px; font-weight:700;
+    border-bottom:3px solid var(--ink); padding-bottom:7px;
   }
-  .dish { padding: 12px 0; border-bottom: 1px solid var(--hair); }
-  .dish:last-child { border-bottom: 0; }
-  .lab { font-size: 12px; color: var(--muted); }
-  .name { font-size: 17px; }
-  .diet { font-weight: 700; white-space: nowrap; }
-  .alg {
-    display: block; margin-top: 5px; font-size: 12.5px;
-    letter-spacing: .05em; text-transform: uppercase; color: var(--muted);
-  }
-  .dish.flag { background: var(--warn-bg); margin: 0 -12px; padding: 12px; }
-  .dish.flag .alg { color: var(--warn); font-weight: 700; }
-  .flagline {
-    display: block; margin-top: 6px; font-size: 13px;
-    font-weight: 700; color: var(--warn);
-  }
+  .dish { padding:12px 0; border-bottom:1px solid var(--hair); }
+  .dish:last-child { border-bottom:0; }
+  .lab { font-size:17px; font-weight:700; color:var(--ink); }
+  .name { font-size:17px; }
+  .diet { font-weight:700; white-space:nowrap; }
+  .alg { display:block; margin-top:5px; font-size:13.5px; color:var(--muted); }
+  .alg b { color:var(--ink); font-weight:700; }
+  .alg span { font-weight:400; }
+  .dish.flag { background:var(--warn-bg); margin:0 -12px; padding:12px; }
+  .dish.flag .alg, .dish.flag .alg b, .dish.flag .alg span { color:var(--warn); }
+  .flagline { display:block; margin-top:6px; font-size:13px; font-weight:700; color:var(--warn); }
 
-  .draft {
-    margin: 26px 0 0; padding: 12px 14px; border: 2px solid var(--warn);
-    color: var(--warn); font-size: 13.5px; font-weight: 700;
-  }
   footer {
-    margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--hair);
-    font-size: 13px; color: var(--muted);
+    margin-top:30px; padding-top:16px; border-top:1px solid var(--hair);
+    font-size:13px; color:var(--muted);
   }
-  .legend { margin-bottom: 10px; color: var(--ink); font-size: 13.5px; }
-  .legend b { font-weight: 700; }
+  .legend { margin-bottom:10px; color:var(--ink); font-size:13.5px; }
+  .legend b { font-weight:700; }
 
-  button:focus-visible, [tabindex]:focus-visible {
-    outline: 3px solid var(--ink); outline-offset: 2px;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .dish { transition: background-color .15s ease; }
-  }
-  @media (min-width: 560px) { h1 { font-size: 52px; } }
+  button:focus-visible { outline:3px solid var(--ink); outline-offset:2px; }
+  @media (prefers-reduced-motion:no-preference) { .dish { transition:background-color .15s ease; } }
+  @media (min-width:560px) { h1 { font-size:60px; } }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="eyebrow">Social Point</div>
-    <h1>Lunch</h1>
+    <h1>Social Point<br>Barcelona</h1>
+    <div class="kicker">Menu</div>
     <div class="rule"></div>
+    <dl class="times">
+      <div class="slot"><dt>Breakfast</dt><dd>09.00 - 11.30</dd></div>
+      <div class="slot"><dt>Lunch</dt><dd>12.45 - 14.45</dd></div>
+    </dl>
     <div class="days" role="tablist" aria-label="Day"></div>
   </header>
 
@@ -141,8 +132,6 @@
 
   <main id="menu"></main>
 
-  <p class="draft">Draft. Allergen data is pending chef sign-off and is not yet approved for service.</p>
-
   <footer>
     <p class="legend"><b>VG</b> vegan / plant based &nbsp;&nbsp; <b>V</b> vegetarian</p>
     <p><b>Menus are subject to change up to and including the time of service. The most
@@ -153,13 +142,12 @@
 </div>
 
 <script>
-const MENU = {"Monday": {"date": "31.08.2026", "g": [{"t": "Soup", "i": [{"n": "Tomato, Roast Pepper & White Bean Smooth Soup", "m": "VG", "a": "Celery", "t": ["Celery"], "l": ""}]}, {"t": "Mains", "i": [{"n": "Pumpkin Risotto, Maple Roasted Squash, Toasted Pumpkin Seed, Cavalo Nero", "m": "VG", "a": "Celery, Sulphites", "t": ["Celery", "Sulphites"], "l": ""}, {"n": "Roasted Atlantic Hake", "m": "", "a": "Fish", "t": ["Fish"], "l": ""}, {"n": "Sea Salt & Pepper Chicken Thigh", "m": "", "a": "No declared allergens", "t": [], "l": ""}]}, {"t": "Sides", "i": [{"n": "Mushroom & Bean Chilli", "m": "VG", "a": "Celery", "t": ["Celery"], "l": ""}, {"n": "Pearl Couscous with Tomato & Herbs", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": ""}, {"n": "Roast Peppers & Courgettes", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Aubergine Roast, Pomegranate Drip", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}]}, {"t": "Signature salads", "i": [{"n": "Caprese Salad", "m": "V", "a": "Milk, Sulphites", "t": ["Milk", "Sulphites"], "l": ""}, {"n": "German Potato Salad", "m": "V", "a": "Gluten (Wheat), Eggs, Sulphites", "t": ["Gluten", "Eggs", "Sulphites"], "l": ""}]}, {"t": "Salad bar", "i": [{"n": "Lamb's Lettuce (Mâche)", "m": "VG", "a": "No declared allergens", "t": [], "l": "Leaf"}, {"n": "Fusilli Pasta", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": "Base"}, {"n": "Cherry Tomatoes", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Cucumber", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Red Onion", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Sweetcorn", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Mozzarella", "m": "V", "a": "Milk", "t": ["Milk"], "l": ""}, {"n": "Tuna", "m": "", "a": "Fish", "t": ["Fish"], "l": ""}, {"n": "House Dressing", "m": "VG", "a": "Mustard, Sulphites", "t": ["Mustard", "Sulphites"], "l": ""}, {"n": "Basil Dressing", "m": "VG", "a": "No declared allergens", "t": [], "l": "Today"}]}, {"t": "Bread", "i": [{"n": "Selection of breads (baguette & multigrain)", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": ""}]}, {"t": "Dessert", "i": [{"n": "Gingerbread Apple Crumble Tray", "m": "V", "a": "Gluten (Wheat), Eggs, Milk", "t": ["Gluten", "Eggs", "Milk"], "l": ""}]}]}, "Tuesday": {"date": "01.09.2026", "g": [{"t": "Soup", "i": [{"n": "Roasted Butternut Squash Soup", "m": "V", "a": "Milk, Sulphites", "t": ["Milk", "Sulphites"], "l": ""}]}, {"t": "Mains", "i": [{"n": "Cloud-Rendered Aubergine & Tomato Ragù", "m": "VG", "a": "Celery, Sulphites", "t": ["Celery", "Sulphites"], "l": ""}, {"n": "Cheesy Vegetable Lasagne", "m": "V", "a": "Gluten (Wheat), Eggs, Milk, Celery", "t": ["Gluten", "Eggs", "Milk", "Celery"], "l": ""}, {"n": "The Perfect Pork Chops", "m": "", "a": "No declared allergens", "t": [], "l": ""}]}, {"t": "Sides", "i": [{"n": "Vegan Curried Squash, Red Lentils & Cashews", "m": "VG", "a": "Nuts (Cashews)", "t": ["Nuts"], "l": ""}, {"n": "Tagliatelle al Pomodoro, Fresh Basil, Black Pepper,Pecorino", "m": "V", "a": "Gluten (Wheat), Eggs, Milk", "t": ["Gluten", "Eggs", "Milk"], "l": ""}, {"n": "Kale & Pumpkin Seed Flash Sauté", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Roasted Tenderstem Broccoli", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}]}, {"t": "Signature salads", "i": [{"n": "Greek Hotiatiki Salad", "m": "V", "a": "Milk, Sulphites", "t": ["Milk", "Sulphites"], "l": ""}, {"n": "Our Waldorf Salad", "m": "V", "a": "Eggs, Sulphites", "t": ["Eggs", "Sulphites"], "l": ""}]}, {"t": "Salad bar", "i": [{"n": "Rocket", "m": "VG", "a": "No declared allergens", "t": [], "l": "Leaf"}, {"n": "Quinoa", "m": "VG", "a": "No declared allergens", "t": [], "l": "Base"}, {"n": "Avocado", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Carrot", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Roasted Peppers", "m": "VG", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "Black Olives", "m": "VG", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "Boiled Egg", "m": "V", "a": "Eggs", "t": ["Eggs"], "l": ""}, {"n": "Cooked Ham", "m": "", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "House Dressing", "m": "VG", "a": "Mustard, Sulphites", "t": ["Mustard", "Sulphites"], "l": ""}, {"n": "Tahini & Lemon Dressing", "m": "VG", "a": "Sesame", "t": ["Sesame"], "l": "Today"}]}, {"t": "Bread", "i": [{"n": "Selection of breads (baguette & multigrain)", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": ""}]}, {"t": "Dessert", "i": [{"n": "Millefeuille Tray Cake", "m": "V", "a": "Gluten (Wheat), Eggs, Milk", "t": ["Gluten", "Eggs", "Milk"], "l": ""}]}]}, "Wednesday": {"date": "02.09.2026", "g": [{"t": "Soup", "i": [{"n": "Roasted Aubergine, Oregano and Tomato Soup", "m": "VG", "a": "Celery", "t": ["Celery"], "l": ""}]}, {"t": "Mains", "i": [{"n": "Spice roasted chickpeas & kale chana masala", "m": "VG", "a": "Celery, Mustard", "t": ["Celery", "Mustard"], "l": ""}, {"n": "Classic Roasted Chicken & its Juices", "m": "", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "Bolognese Pasta", "m": "", "a": "Gluten (Wheat), Eggs, Milk, Celery", "t": ["Gluten", "Eggs", "Milk", "Celery"], "l": ""}]}, {"t": "Sides", "i": [{"n": "BBQ Baked Beans", "m": "VG", "a": "Mustard, Celery, Sulphites", "t": ["Celery", "Mustard", "Sulphites"], "l": ""}, {"n": "Fennel Seed Roasted Potatoes", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Sauted Courgettes & Spinach", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Herb-Glazed Cherry Tomatoes", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}]}, {"t": "Signature salads", "i": [{"n": "Chopped Kale Caesar Salad, aged parmesan, Croutons, Toasted Sunflower Seeds", "m": "", "a": "Gluten (Wheat), Eggs, Fish, Milk, Mustard", "t": ["Gluten", "Eggs", "Fish", "Milk", "Mustard"], "l": ""}, {"n": "Avocado, tomato, basil and crunchy quinoa", "m": "V", "a": "Gluten (Wheat), Milk, Nuts (Almonds, Hazelnuts, Walnuts, Cashews), Sulphites", "t": ["Gluten", "Milk", "Nuts", "Sulphites"], "l": ""}]}, {"t": "Salad bar", "i": [{"n": "Iceberg Lettuce", "m": "VG", "a": "No declared allergens", "t": [], "l": "Leaf"}, {"n": "Lentils", "m": "VG", "a": "No declared allergens", "t": [], "l": "Base"}, {"n": "Cherry Tomatoes", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Cucumber", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Sweetcorn", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Gherkins", "m": "VG", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "Mozzarella", "m": "V", "a": "Milk", "t": ["Milk"], "l": ""}, {"n": "Tuna", "m": "", "a": "Fish", "t": ["Fish"], "l": ""}, {"n": "House Dressing", "m": "VG", "a": "Mustard, Sulphites", "t": ["Mustard", "Sulphites"], "l": ""}, {"n": "Ranch Dressing", "m": "V", "a": "Eggs, Milk, Mustard", "t": ["Eggs", "Milk", "Mustard"], "l": "Today"}]}, {"t": "Bread", "i": [{"n": "Selection of breads (baguette & multigrain)", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": ""}]}, {"t": "Dessert", "i": [{"n": "3 Leches Tray Cake", "m": "V", "a": "Gluten (Wheat), Eggs, Milk", "t": ["Gluten", "Eggs", "Milk"], "l": ""}]}]}, "Thursday": {"date": "03.09.2026", "g": [{"t": "Soup", "i": [{"n": "Broccoli & Leek Soup", "m": "VG", "a": "Celery, Sulphites", "t": ["Celery", "Sulphites"], "l": ""}]}, {"t": "Mains", "i": [{"n": "Grilled veggies with romescu sauce", "m": "VG", "a": "Nuts (Almonds, Hazelnuts), Celery, Sulphites", "t": ["Nuts", "Celery", "Sulphites"], "l": ""}, {"n": "Stuffed Omelette Pockets", "m": "V", "a": "Eggs, Milk", "t": ["Eggs", "Milk"], "l": ""}, {"n": "Piri Piri Chicken", "m": "", "a": "Sulphites", "t": ["Sulphites"], "l": ""}]}, {"t": "Sides", "i": [{"n": "Wild Rice & Roasted Mushroom Mix", "m": "VG", "a": "Gluten (Wheat), Soy", "t": ["Gluten", "Soy"], "l": ""}, {"n": "Ají Amarillo Sweet Potato Wedges", "m": "VG", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "Spanish Pisto", "m": "VG", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "Buttered Green Beans & Broccoli", "m": "V", "a": "Milk", "t": ["Milk"], "l": ""}]}, {"t": "Signature salads", "i": [{"n": "Apple & Celeriac Slaw, Walnuts, Lemon Mustard Vinaigrette", "m": "VG", "a": "Nuts (Walnuts), Celery, Mustard, Sulphites", "t": ["Nuts", "Celery", "Mustard", "Sulphites"], "l": ""}, {"n": "Pesto pasta, sunripe tomatoes, black olives, basil & rocket", "m": "V", "a": "Gluten (Wheat), Milk, Nuts (Pine Nuts)", "t": ["Gluten", "Milk", "Nuts"], "l": ""}]}, {"t": "Salad bar", "i": [{"n": "Mixed Leaves (Mesclun)", "m": "VG", "a": "No declared allergens", "t": [], "l": "Leaf"}, {"n": "Chickpeas", "m": "VG", "a": "No declared allergens", "t": [], "l": "Base"}, {"n": "Avocado", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Carrot", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Red Onion", "m": "VG", "a": "No declared allergens", "t": [], "l": ""}, {"n": "Black Olives", "m": "VG", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "Boiled Egg", "m": "V", "a": "Eggs", "t": ["Eggs"], "l": ""}, {"n": "Cooked Ham", "m": "", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "House Dressing", "m": "VG", "a": "Mustard, Sulphites", "t": ["Mustard", "Sulphites"], "l": ""}, {"n": "Caesar Dressing", "m": "", "a": "Eggs, Fish, Milk, Mustard", "t": ["Eggs", "Fish", "Milk", "Mustard"], "l": "Today"}]}, {"t": "Bread", "i": [{"n": "Selection of breads (baguette & multigrain)", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": ""}]}, {"t": "Dessert", "i": [{"n": "Oats&Berry Cake", "m": "V", "a": "Gluten (Oats, Wheat), Eggs, Milk", "t": ["Gluten", "Eggs", "Milk"], "l": ""}]}]}};
+const MENU = {"Monday": {"date": "31.08.2026", "g": [{"t": "Soup", "i": [{"n": "Tomato, Roast Pepper & White Bean Smooth Soup", "m": "VG", "a": "Celery", "t": ["Celery"], "l": ""}]}, {"t": "Mains", "i": [{"n": "Pumpkin Risotto, Maple Roasted Squash, Toasted Pumpkin Seed, Cavalo Nero", "m": "VG", "a": "none", "t": [], "l": ""}, {"n": "Roasted Atlantic Hake", "m": "", "a": "Fish", "t": ["Fish"], "l": ""}, {"n": "Sea Salt & Pepper Chicken Thigh", "m": "", "a": "none", "t": [], "l": ""}]}, {"t": "Sides", "i": [{"n": "Mushroom & Bean Chilli", "m": "VG", "a": "Celery", "t": ["Celery"], "l": ""}, {"n": "Pearl Couscous with Tomato & Herbs", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": ""}, {"n": "Roast Peppers & Courgettes", "m": "VG", "a": "none", "t": [], "l": ""}, {"n": "Aubergine Roast, Pomegranate Drip", "m": "VG", "a": "none", "t": [], "l": ""}]}, {"t": "Signature salads", "i": [{"n": "Caprese Salad", "m": "V", "a": "Milk, Sulphites", "t": ["Milk", "Sulphites"], "l": ""}, {"n": "German Potato Salad", "m": "V", "a": "Gluten (Wheat), Eggs, Sulphites", "t": ["Gluten", "Eggs", "Sulphites"], "l": ""}]}, {"t": "Salad bar", "i": [{"n": "Lamb's Lettuce (Mâche)", "m": "VG", "a": "none", "t": [], "l": "Leaf"}, {"n": "Fusilli Pasta", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": "Base"}, {"n": "Cherry Tomatoes · Cucumber · Red Onion · Sweetcorn · Mozzarella · Tuna", "m": "", "a": "Fish, Milk", "t": ["Fish", "Milk"], "l": "Toppings"}, {"n": "House Dressing", "m": "VG", "a": "Mustard, Sulphites", "t": ["Mustard", "Sulphites"], "l": ""}, {"n": "Basil Dressing", "m": "VG", "a": "none", "t": [], "l": "Monday Dressing"}]}, {"t": "Bread", "i": [{"n": "Selection of breads (baguette & multigrain)", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": ""}]}, {"t": "Dessert", "i": [{"n": "Gingerbread Apple Crumble Tray", "m": "V", "a": "Gluten (Wheat), Eggs, Milk", "t": ["Gluten", "Eggs", "Milk"], "l": ""}]}]}, "Tuesday": {"date": "01.09.2026", "g": [{"t": "Soup", "i": [{"n": "Roasted Butternut Squash Soup", "m": "V", "a": "Milk, Sulphites", "t": ["Milk", "Sulphites"], "l": ""}]}, {"t": "Mains", "i": [{"n": "Cloud-Rendered Aubergine & Tomato Ragù", "m": "VG", "a": "none", "t": [], "l": ""}, {"n": "Cheesy Vegetable Lasagne", "m": "V", "a": "Gluten (Wheat), Eggs, Milk", "t": ["Gluten", "Eggs", "Milk"], "l": ""}, {"n": "The Perfect Pork Chops", "m": "", "a": "none", "t": [], "l": ""}]}, {"t": "Sides", "i": [{"n": "Vegan Curried Squash, Red Lentils & Cashews", "m": "VG", "a": "Nuts (Cashews)", "t": ["Nuts"], "l": ""}, {"n": "Tagliatelle al Pomodoro, Fresh Basil, Black Pepper,Pecorino", "m": "V", "a": "Gluten (Wheat), Milk", "t": ["Gluten", "Milk"], "l": ""}, {"n": "Kale & Pumpkin Seed Flash Sauté", "m": "VG", "a": "none", "t": [], "l": ""}, {"n": "Roasted Tenderstem Broccoli", "m": "VG", "a": "none", "t": [], "l": ""}]}, {"t": "Signature salads", "i": [{"n": "Greek Hotiatiki Salad", "m": "V", "a": "Milk, Sulphites", "t": ["Milk", "Sulphites"], "l": ""}, {"n": "Our Waldorf Salad", "m": "V", "a": "Eggs, Sulphites", "t": ["Eggs", "Sulphites"], "l": ""}]}, {"t": "Salad bar", "i": [{"n": "Rocket", "m": "VG", "a": "none", "t": [], "l": "Leaf"}, {"n": "Quinoa", "m": "VG", "a": "none", "t": [], "l": "Base"}, {"n": "Avocado · Carrot · Roasted Peppers · Black Olives · Boiled Egg · Cooked Ham", "m": "", "a": "Eggs, Sulphites", "t": ["Eggs", "Sulphites"], "l": "Toppings"}, {"n": "House Dressing", "m": "VG", "a": "Mustard, Sulphites", "t": ["Mustard", "Sulphites"], "l": ""}, {"n": "Tahini & Lemon Dressing", "m": "VG", "a": "Sesame", "t": ["Sesame"], "l": "Tuesday Dressing"}]}, {"t": "Bread", "i": [{"n": "Selection of breads (baguette & multigrain)", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": ""}]}, {"t": "Dessert", "i": [{"n": "Millefeuille Tray Cake", "m": "V", "a": "Gluten (Wheat), Eggs, Milk", "t": ["Gluten", "Eggs", "Milk"], "l": ""}]}]}, "Wednesday": {"date": "02.09.2026", "g": [{"t": "Soup", "i": [{"n": "Roasted Aubergine, Oregano and Tomato Soup", "m": "VG", "a": "Celery", "t": ["Celery"], "l": ""}]}, {"t": "Mains", "i": [{"n": "Spice roasted chickpeas & kale chana masala", "m": "VG", "a": "Celery, Mustard", "t": ["Celery", "Mustard"], "l": ""}, {"n": "Classic Roasted Chicken & its Juices", "m": "", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "Bolognese Pasta", "m": "", "a": "Gluten (Wheat), Eggs, Milk, Celery", "t": ["Gluten", "Eggs", "Milk", "Celery"], "l": ""}]}, {"t": "Sides", "i": [{"n": "BBQ Baked Beans", "m": "VG", "a": "Mustard", "t": ["Mustard"], "l": ""}, {"n": "Fennel Seed Roasted Potatoes", "m": "VG", "a": "none", "t": [], "l": ""}, {"n": "Sauted Courgettes & Spinach", "m": "VG", "a": "none", "t": [], "l": ""}, {"n": "Herb-Glazed Cherry Tomatoes", "m": "VG", "a": "none", "t": [], "l": ""}]}, {"t": "Signature salads", "i": [{"n": "Chopped Kale Caesar Salad, aged parmesan, Croutons, Toasted Sunflower Seeds", "m": "", "a": "Gluten (Wheat), Eggs, Fish, Milk, Mustard", "t": ["Gluten", "Eggs", "Fish", "Milk", "Mustard"], "l": ""}, {"n": "Avocado, tomato, basil and crunchy quinoa", "m": "V", "a": "Gluten (Wheat), Milk, Nuts (Mixed), Sulphites", "t": ["Gluten", "Milk", "Nuts", "Sulphites"], "l": ""}]}, {"t": "Salad bar", "i": [{"n": "Iceberg Lettuce", "m": "VG", "a": "none", "t": [], "l": "Leaf"}, {"n": "Lentils", "m": "VG", "a": "none", "t": [], "l": "Base"}, {"n": "Cherry Tomatoes · Cucumber · Sweetcorn · Gherkins · Mozzarella · Tuna", "m": "", "a": "Fish, Milk, Sulphites", "t": ["Fish", "Milk", "Sulphites"], "l": "Toppings"}, {"n": "House Dressing", "m": "VG", "a": "Mustard, Sulphites", "t": ["Mustard", "Sulphites"], "l": ""}, {"n": "Ranch Dressing", "m": "V", "a": "Eggs, Milk, Mustard", "t": ["Eggs", "Milk", "Mustard"], "l": "Wednesday Dressing"}]}, {"t": "Bread", "i": [{"n": "Selection of breads (baguette & multigrain)", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": ""}]}, {"t": "Dessert", "i": [{"n": "3 Leches Tray Cake", "m": "V", "a": "Gluten (Wheat), Eggs, Milk", "t": ["Gluten", "Eggs", "Milk"], "l": ""}]}]}, "Thursday": {"date": "03.09.2026", "g": [{"t": "Soup", "i": [{"n": "Broccoli & Leek Soup", "m": "VG", "a": "Celery, Sulphites", "t": ["Celery", "Sulphites"], "l": ""}]}, {"t": "Mains", "i": [{"n": "Grilled veggies with romescu sauce", "m": "VG", "a": "Nuts (Mixed), Celery, Sulphites", "t": ["Nuts", "Celery", "Sulphites"], "l": ""}, {"n": "Stuffed Omelette Pockets", "m": "V", "a": "Eggs, Milk", "t": ["Eggs", "Milk"], "l": ""}, {"n": "Piri Piri Chicken", "m": "", "a": "Sulphites", "t": ["Sulphites"], "l": ""}]}, {"t": "Sides", "i": [{"n": "Wild Rice & Roasted Mushroom Mix", "m": "VG", "a": "Gluten (Wheat), Soy", "t": ["Gluten", "Soy"], "l": ""}, {"n": "Ají Amarillo Sweet Potato Wedges", "m": "VG", "a": "none", "t": [], "l": ""}, {"n": "Spanish Pisto", "m": "VG", "a": "Sulphites", "t": ["Sulphites"], "l": ""}, {"n": "Buttered Green Beans & Broccoli", "m": "V", "a": "Milk", "t": ["Milk"], "l": ""}]}, {"t": "Signature salads", "i": [{"n": "Apple & Celeriac Slaw, Walnuts, Lemon Mustard Vinaigrette", "m": "VG", "a": "Nuts (Walnuts), Celery, Mustard, Sulphites", "t": ["Nuts", "Celery", "Mustard", "Sulphites"], "l": ""}, {"n": "Pesto pasta, sunripe tomatoes, black olives, basil & rocket", "m": "V", "a": "Gluten (Wheat), Milk, Nuts (Pine Nuts)", "t": ["Gluten", "Milk", "Nuts"], "l": ""}]}, {"t": "Salad bar", "i": [{"n": "Mixed Leaves (Mesclun)", "m": "VG", "a": "none", "t": [], "l": "Leaf"}, {"n": "Chickpeas", "m": "VG", "a": "none", "t": [], "l": "Base"}, {"n": "Avocado · Carrot · Red Onion · Black Olives · Boiled Egg · Cooked Ham", "m": "", "a": "Eggs, Sulphites", "t": ["Eggs", "Sulphites"], "l": "Toppings"}, {"n": "House Dressing", "m": "VG", "a": "Mustard, Sulphites", "t": ["Mustard", "Sulphites"], "l": ""}, {"n": "Caesar Dressing", "m": "", "a": "Eggs, Fish, Milk, Mustard", "t": ["Eggs", "Fish", "Milk", "Mustard"], "l": "Thursday Dressing"}]}, {"t": "Bread", "i": [{"n": "Selection of breads (baguette & multigrain)", "m": "VG", "a": "Gluten (Wheat)", "t": ["Gluten"], "l": ""}]}, {"t": "Dessert", "i": [{"n": "Oats&Berry Cake", "m": "V", "a": "Gluten (Oats), Eggs, Milk", "t": ["Gluten", "Eggs", "Milk"], "l": ""}]}]}};
 const FILTERS = ["Gluten", "Eggs", "Fish", "Soy", "Milk", "Nuts", "Celery", "Mustard", "Sesame", "Sulphites"];
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday"];
 
 let day = DAYS[0];
 const avoid = new Set();
-
 const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 function buildDays() {
@@ -184,7 +172,7 @@ function buildChips() {
 
 function render() {
   let flagged = 0, total = 0;
-  const html = MENU[day].g.map(g => {
+  document.getElementById('menu').innerHTML = MENU[day].g.map(g => {
     const rows = g.i.map(it => {
       total++;
       const hits = it.t.filter(t => avoid.has(t));
@@ -195,15 +183,12 @@ function render() {
         ? `<span class="flagline">Contains ${hits.join(', ').toLowerCase()}</span>` : '';
       return `<div class="dish${hits.length ? ' flag' : ''}">` +
              `${lab}<span class="name">${esc(it.n)}</span>${diet}` +
-             `<span class="alg">${esc(it.a)}</span>${line}</div>`;
+             `<span class="alg"><b>Allergens:</b> <span>${esc(it.a)}</span></span>${line}</div>`;
     }).join('');
     return `<section><h2>${esc(g.t)}</h2>${rows}</section>`;
   }).join('');
-  document.getElementById('menu').innerHTML = html;
-
   const c = document.querySelector('.count');
-  c.textContent = avoid.size === 0 ? ''
-    : `${flagged} of ${total} items contain something you avoid.`;
+  c.textContent = avoid.size === 0 ? '' : `${flagged} of ${total} items contain something you avoid.`;
 }
 
 document.querySelector('.clear').onclick = () => { avoid.clear(); buildChips(); render(); };
